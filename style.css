@@ -1,0 +1,4 @@
+body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+.login-container { background: white; padding: 40px; border-radius: 12px; width: 100%; max-width: 400px; }
+input { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 6px; }
+.submit-btn { width: 100%; padding: 12px; background: #667eea; color: white; border: none; border-radius: 6px; }
