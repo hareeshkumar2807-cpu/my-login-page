@@ -22,11 +22,43 @@
         </form>
     </div>
 
-    <!-- Firebase Connection Links -->
+    <!-- 1. Load Firebase Library Engines First -->
     <script src="https://gstatic.com"></script>
     <script src="https://gstatic.com"></script>
     
-    <!-- Your Custom Script Logic -->
-    <script src="script.js"></script>
+    <!-- 2. Run Backend Connection Directly -->
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyAnQIA5uxp0jzv8b0hUEow9yBzpBF-ofUI",
+            authDomain: "://firebaseapp.com",
+            projectId: "my-login-system-e636d",
+            storageBucket: "my-login-system-e636d.firebasestorage.app",
+            messagingSenderId: "627391470053",
+            appId: "1:627391470053:web:a2600bde4b1b93e8dc770c",
+            measurementId: "G-WWE3D6SX1K"
+        };
+
+        // Initialize Firebase Backend
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+
+        // Intercept Form Submission
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault(); 
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Automatically create user profile
+            auth.createUserWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    alert("Account successfully created and saved to database!");
+                    console.log("Registered user:", userCredential.user);
+                })
+                .catch((error) => {
+                    alert("Error: " + error.message);
+                });
+        });
+    </script>
 </body>
 </html>
