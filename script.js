@@ -21,12 +21,14 @@ document.getElementById('loginForm').addEventListener('submit', function(e) {
     const password = document.getElementById('password').value;
 
     // Send the credentials to your Firebase backend to sign in
-    auth.signInWithEmailAndPassword(email, password)
+    // This function automatically creates and saves the user in your Firebase backend
+    auth.createUserWithEmailAndPassword(email, password)
         .then((userCredential) => {
-            alert("Success! You are logged in.");
-            console.log("Logged in user:", userCredential.user);
+            alert("Account successfully created and saved to database!");
+            console.log("Registered user:", userCredential.user);
         })
         .catch((error) => {
-            alert("Login Failed: " + error.message);
+            alert("Error saving user: " + error.message);
         });
+
 });
